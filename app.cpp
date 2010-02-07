@@ -363,7 +363,7 @@ void App::display()
   if (m_separation_mode!=FULL_COLOR){	
 		const float calibrationXColorCamImageToVR=0;
 		const float calibrationYColorCamImageToVR=0;
-		const float calibrationXBothCamImageToVR=2;
+		const float calibrationXBothCamImageToVR=-2;
 		const float calibrationYBothCamImageToVR=-2;
 		
     // red-green left

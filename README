@@ -1,0 +1,41 @@
+
+--Running/Installation--
+
+Requirements (hardware side):
+- Webcam
+- 3D glasses (red-cyan)
+- (white paper)
+
+The theoretically best place for the webcam is behind the middle of screen, 
+probably in a distance between 50cm and 2m from your head. Since you can't actually
+place it there (unless you have a transparent screen), you should find the nearest
+possible place for it.
+The white paper is necessary to cover your mouth and nostrils, so the program won't 
+confuse them with the red side of the glasses (under the right lighting conditions
+this could be optionally...).
+
+Requirements (software side):
+- OpenGL, GLU, GLUT
+- OpenCV
+- GCC of course
+
+The binary can only be executed on Linux amd64 (debian, squeeze). 
+It is however possible to compile it (only tested with the
+3d-part before the webcam source was added) on Windows.
+
+
+--Usage--
+
+Start the program, put on the 3d glasses, move your head in the zero position,
+right click somewhere and click on "calibrate position".
+Afterwards you can move the head to look around.
+
+There are also various options in the context menu and you can move the camera
+in the world with the mouse.
+
+If the red side of the glasses isn't detected, you can tweak the defines 
+in realcamera.cpp (e.g. RED_S_FACTOR).
+If the mapping head movement->camera movement doesn't work, you can tweak 
+the constants in app.cpp (e.g calibrationXBothCamImageToVR)
+In both cases you have to recompile it.
+

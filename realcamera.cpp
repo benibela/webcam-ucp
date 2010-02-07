@@ -180,18 +180,27 @@ void RealCamera::trackGlasses(float &x, float &y, float &w, float &h,
 			  }
 
 				bool isRed=false;
-				if (imagePixelHLS[1] >= 15 && imagePixelHLS[1] <= 200 && imagePixelHLS[2] >= 70) {
-					isRed = imagePixelHLS[0]<=10 || imagePixelHLS[0]>=170;
+				if (imagePixelHLS[1] >= 10 && imagePixelHLS[1] <= 200 && imagePixelHLS[2] >= 70) {
+					isRed = imagePixelHLS[0]<=10 || imagePixelHLS[0]>=160;
 				}
 				if (!isRed) dataTrackRed[i*stepTrack+j] = 0;
 				else {
-				  uchar quality=255-(255-imagePixelHLS[2]);
-					if (imagePixelHLS[0]<=10) quality-=imagePixelHLS[0]*6;
-					else quality-=(180-imagePixelHLS[0])*6;
-					if (imagePixelHLS[1]<=70) quality-=70-imagePixelHLS[1];
-					else if (imagePixelHLS[1]>=140) quality-=imagePixelHLS[1]-140;
-					if (quality<imagePixelHLS[2]) dataTrackRed[i*stepTrack+j]=quality;
-					else dataTrackRed[i*stepTrack+j]=0; //underflow
+					int curH=imagePixelHLS[0];
+					int curL=imagePixelHLS[1];
+					int curS=imagePixelHLS[2];
+#define RED_S_FACTOR 1
+#define RED_H_LEFT_FACTOR 6
+#define RED_H_RIGHT_FACTOR 6
+#define RED_L_DARK_FACTOR 1/3
+#define RED_L_LIGHT_FACTOR 2/3
+					int quality=255-(255-curS)*RED_S_FACTOR;
+					if (curH<=90) quality-=curH*RED_H_LEFT_FACTOR;
+					else quality-=(180-curH)*RED_H_RIGHT_FACTOR;
+					if (curL<=110) quality-=(128-curL)*RED_L_DARK_FACTOR;
+					else if (curL>=140) quality-=(curL-128)*RED_L_LIGHT_FACTOR;
+					if (quality<0) dataTrackRed[i*stepTrack+j]=0;
+					else if (quality>255) dataTrackRed[i*stepTrack+j]=255;
+					else dataTrackRed[i*stepTrack+j]=quality;
 			  }
 			}
 	
