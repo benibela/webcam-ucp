@@ -126,6 +126,5 @@ void Camera::calc_centered_projection_matrix(const float xoff, const float yoff,
 	
 	skew_matrix[2]=-2*xoff;
 	skew_matrix[6]=2*yoff;
-	std::cout << xoff <<":"<<yoff<<"\n";
 }
 

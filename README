@@ -39,3 +39,9 @@ If the mapping head movement->camera movement doesn't work, you can tweak
 the constants in app.cpp (e.g calibrationXBothCamImageToVR)
 In both cases you have to recompile it.
 
+
+
+
+Benito van der Zander
+www.benibela.de
+benito@benibela.de
