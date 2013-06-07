@@ -1,4 +1,11 @@
+--About--
 
+This was an experiment to render a UCP 3D scene, so that the projection matrix is changed when the user moves his head.
+
+A webcam is used to track the 3d glasses the user is wearing, by detecting especially red and cyan rectangles.
+
+It it would work, you could move around to look at the side of objects, just like you can in the real world. But it does not really work.
+ 
 --Running/Installation--
 
 Requirements (hardware side):
@@ -12,16 +19,15 @@ place it there (unless you have a transparent screen), you should find the neare
 possible place for it.
 The white paper is necessary to cover your mouth and nostrils, so the program won't 
 confuse them with the red side of the glasses (under the right lighting conditions
-this could be optionally...).
+this could be optional...).
 
 Requirements (software side):
 - OpenGL, GLU, GLUT
 - OpenCV
 - GCC of course
 
-The binary can only be executed on Linux amd64 (debian, squeeze). 
-It is however possible to compile it (only tested with the
-3d-part before the webcam source was added) on Windows.
+The [binary from my homepage](http://www.benibela.de/demos_en.html#webcamucp) can only be executed on Linux amd64 (debian, squeeze). 
+It is however possible to compile it (only tested with the 3d-part before the webcam source was added) on Windows.
 
 
 --Usage--
